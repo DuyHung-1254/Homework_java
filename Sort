@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class sort1 {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Nhập :");
+		int x[] = new int[100] ;
+		int min[] = new int[100];
+		for(int i = 0 ; i < 5 ; i++)
+		{
+			x[i] = scan.nextInt();
+		}
+		
+		
+		for(int i = 0 ; i < 5 ; i++)
+		{
+			for(int j = i + 1 ; j < 5 ; j++)
+			{
+				if(x[i] > x[j ])
+				{
+					int temp ;
+					temp = x[i];
+					x[i] = x[j];
+					x[j] = temp ;
+				}
+					
+			}
+		}
+		
+		for(int i = 0 ; i < 5 ; i++)
+		{
+			System.out.println(x[i]);
+		}
+	}
+}

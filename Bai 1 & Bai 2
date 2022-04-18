@@ -1,0 +1,100 @@
+package stack;
+
+
+interface inter_stack
+{
+	
+	public void push();
+	public int pop();
+	public boolean isEmpty();
+	public void show();
+}
+
+
+class stack implements inter_stack
+{
+    private int arr[];
+    private int top;
+    private int capacity;
+ 
+    
+    stack(int size)
+    {
+        arr = new int[size];
+        capacity = size;
+        top = -1;
+    }
+ 
+
+    public void push(int x)
+    {
+        if (isFull())
+        {
+            System.exit(-1);
+        }
+ 
+        System.out.println("Push  " + x);
+        arr[++top] = x;
+    }
+ 
+
+    public int pop()
+    {
+
+        if (isEmpty())
+        {
+            System.exit(-1);
+        }
+ 
+        System.out.println("Pop " + peek());
+ 
+
+        return arr[top--];
+    }
+    
+
+ 
+
+    public int peek()
+    {
+        if (!isEmpty()) {
+            return arr[top];
+        }
+        else {
+            System.exit(-1);
+        }
+ 
+        return -1;
+    }
+ 
+
+    public int size() {
+        return top + 1;
+    }
+ 
+
+    public boolean isEmpty() {
+        return top == -1;               
+    }
+ 
+
+    public boolean isFull() {
+        return top == capacity - 1;     
+    }
+} 
+
+ 
+class stack_array
+{
+    public static void main (String[] args)
+    {
+    	stack stack = new stack(3);
+ 
+        stack.push(1);      
+        stack.push(2);      
+        stack.pop();        
+        stack.pop();         
+        stack.push(3);  
+
+    }
+}

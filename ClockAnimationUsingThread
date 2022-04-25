@@ -1,0 +1,33 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class ClockAnimationUsingThread extends StillClock
+    implements Runnable {
+  public ClockAnimationUsingThread() {
+    new Thread(this).start();
+  }
+  /** ve lai clock moi mot giay */
+  public void run() {
+    while (true) {
+      setCurrentTime(); // Set time moi
+      repaint(); // ve lai clock
+      try {
+        // moi 1s thi se ve lai clock
+        Thread.sleep(1000);
+      }
+      catch (InterruptedException ex) {
+      }
+    }
+  }
+
+  /** Main method */
+  public static void main(String[] args) {
+    JFrame frame = new JFrame("ClockAnimationUsingThread");
+    frame.add(new ClockAnimationUsingThread());
+    frame.setLocationRelativeTo(null); // Center the frame
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(200, 200);
+    frame.setVisible(true);
+  }
+}
+

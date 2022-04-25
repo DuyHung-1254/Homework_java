@@ -1,0 +1,19 @@
+
+
+public class BankMain {
+    public static void main(String[] args) {
+
+        BankAccount JohnSmith = new BankAccount("John Smith", 1,
+            0);   //tạo đối tượng tài khoản (tên tài khoản, số tài khoản, số dư đầu kỳ)
+    
+        JohnSmith.printAccountInfo();
+        JohnSmith.deposit(100); // đặt cọc 100 bảng
+        JohnSmith.deposit(-50); // sẽ trả về lỗi do giá trị âm
+        JohnSmith.deposit(10);  // đặt cọc £10
+        JohnSmith.withdraw(25); // rút £25
+        JohnSmith.withdraw(90); // sẽ trả về lỗi vì số dư sẽ <0
+        System.out.println(JohnSmith.getBalance()); //hiển thị số dư
+        JohnSmith.withdraw(70); // rút £70
+        JohnSmith.printAccountInfo();
+      }
+}

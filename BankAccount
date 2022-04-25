@@ -1,0 +1,69 @@
+package bai_tap_tuan5;
+
+public class BankAccount {
+    private String name;
+    private int accNo;
+    private double balance;
+
+
+  // ham khoi tao 3 bien
+  public BankAccount(String n, int a, double amount) {
+    name = n;
+    accNo = a;
+    balance = amount;
+  }
+
+  // ham khoi tao de dat stk = 0
+  public BankAccount(String n, int a) {
+    name = n;
+    accNo = a;
+    balance = 0.00;
+  }
+
+
+  /* --------------------
+     gui tien so du
+     --------------------*/
+  public void deposit(double amount) {
+    if (amount <= 0) {
+      // tra ve thong tin loi 
+      System.err.println("Không thể gửi số tiền âm. Vui lòng nhập số tiền khác.");
+    } else {
+      this.balance += amount;
+      System.out.format("£%.2f đã được gửi\n", amount);
+    }
+  }
+
+
+  /* --------------------
+     rut tien = cach tru so tien du
+     --------------------*/
+  public void withdraw(double amount) {
+    if (this.balance >= amount) {
+      this.balance -= amount;
+      System.out.format("£%.2f đã được rút \n", amount);
+    } else { // trả về thông báo lỗi nếu rút tiền với số dư tài khoản dưới 0
+      System.err.println(
+          "Giao dịch bị hủy do không đủ tiền. Kiểm tra số dư hoặc tiền gửi");
+    }
+  }
+
+
+  /* --------------------
+     Phương pháp được sử dụng để hiển thị số dư tài khoản
+     --------------------*/
+  public double getBalance() {
+    return balance;
+    //  in thông tin về chuỗi đối lưu bất cứ khi nào getBalance () được gọi.
+  }
+
+  public void printAccountInfo() {
+    System.out.println(this);
+  }
+
+  @Override
+  public String toString() {
+    return "Account name: " + this.name + ", Account number: " + this.accNo
+        + ", Available balance: " + "£" + this.balance;
+  }
+}

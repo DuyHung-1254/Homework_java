@@ -1,0 +1,97 @@
+import java.io.*;
+import java.nio.file.Files;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+public class bai1 {
+    public static void main(String[] args) {
+
+        double[] arr = new double[] { 1, 5, 3, 6, 7, 8, 2, 20, 19 };
+        // try : chua' doan. code , neu xay ra ngoai le ( loi , exception )
+        try {
+            PrintWriter Write_file = new PrintWriter(
+                    "C:/Users/Administrator/Documents/java/bt_tren_lop_85/data/dayso.txt");
+            for (int i = 0; i < arr.length; i++) {
+                Write_file.print(arr[i] + " ");
+            }
+            Write_file.close();
+            // neu co loi thi in ra loi , khong thi bo qua
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        // b
+        double[] new_arr = new double[1000];
+        int i = 0;
+        try {
+            FileReader Read_File = new FileReader(
+                    "C:/Users/Administrator/Documents/java/bt_tren_lop_85/data/dayso.txt");
+            BufferedReader br = new BufferedReader(Read_File);
+            String line = null;
+            while (true) {
+                line = br.readLine();
+                if (line == null) {
+                    break;
+                } else {
+                    int size_line = line.length();
+                    int j = 0;
+                    //
+                    while (j < size_line) {
+                        String tmp = "0";
+                        while (line.charAt(j) != ' ') {
+                            if (line.charAt(j) == '.') {
+                                tmp = tmp + line.charAt(j);
+                                if (j + 1 == size_line)
+                                    break;
+                            } else {
+                                tmp = tmp + line.charAt(j);
+                                if (j + 1 == size_line)
+                                    break;
+                            }
+                            j++;
+                        }
+                        new_arr[i] = Double.parseDouble(tmp);
+                        i++;
+                        j++;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("ban dau :");
+        for (int k = 0; k < i; k++) {
+            System.out.print(new_arr[k] + " ");
+        }
+        System.out.println();
+
+        for (int k = 0; k < i - 1; k++) {
+            for (int h = k + 1; h < i; h++) {
+                if (new_arr[k] > new_arr[h]) {
+                    double tmp = new_arr[k];
+                    new_arr[k] = new_arr[h];
+                    new_arr[h] = tmp;
+                }
+            }
+        }
+
+        System.out.println("sau khi da sap xep :");
+        for (int k = 0; k < i; k++) {
+            System.out.print(new_arr[k] + " ");
+        }
+
+        try {
+            PrintWriter Write_File1 = new PrintWriter(
+                    "C:/Users/Administrator/Documents/java/bt_tren_lop_85/data/sapxep.txt");
+            Write_File1.println("sau khi sap xep :");
+            for (int k = 0; k < i; k++) {
+                Write_File1.print(new_arr[k] + " ");
+            }
+            Write_File1.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}

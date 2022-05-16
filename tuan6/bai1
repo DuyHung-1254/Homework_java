@@ -1,0 +1,80 @@
+public class b1 {
+    protected double a;
+    protected double b;
+
+    public b1() {
+
+    }
+
+    public b1(double a, double b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    public String toString() {
+        if (a == 0)
+            return ("j" + Double.toString(b));
+        else if (b == 0)
+            return (Double.toString(a));
+        else
+            return (Double.toString(a) + " + " + "j" + Double.toString(b));
+    }
+
+    public double Module() {
+        return Math.sqrt(a * a + b * b);
+    }
+
+    public boolean sosanh(b1 x) {
+        if (a == x.a && b == x.b)
+            return true;
+        else
+            return false;
+    }
+
+    public b1 cong(b1 y, b1 z) {
+        z.a = this.a + y.a;
+        z.b = this.b + y.b;
+        return z;
+    }
+
+    public b1 tru(b1 y, b1 z) {
+        z.a = this.a - y.a;
+        z.b = this.b - y.b;
+        return z;
+    }
+
+    public b1 nhan(b1 y, b1 z) {
+        z.a = this.a * y.a - this.b * y.b;
+        z.b = this.a * y.b + this.b * y.a;
+        return z;
+    }
+
+    public b1 chia(b1 y, b1 z) {
+        z.a = (this.a * y.a + this.b * y.b) / (y.a * y.a + y.b * y.b);
+        z.b = (this.b * y.a - this.a * y.b) / (y.a * y.a + y.b * y.b);
+        return z;
+    }
+
+    public b1 lienhop(b1 x) {
+        x.b = -this.b;
+        return x;
+    }
+    public static void main(String[] args) {
+        b1 a = new b1(1, 2);
+        b1 b = new b1(3, 4);
+        b1 c = new b1();
+        b1 x = new b1();
+
+        a.cong(b, c);
+        System.out.println(c.toString());
+
+        a.tru(b, c);
+        System.out.println(c.toString());
+
+        a.chia(b, c);
+        System.out.println(c.toString());
+
+        a.lienhop(x);
+        System.out.println(x.toString());
+    }
+}
